@@ -67,9 +67,9 @@ GPIO_HIGH 1
 ]
 "21 C:\Users\Ehab\Documents\MCU_Projects\Door_Lock\Door_Lock.X\application.c
 [v _main main `(i  1 e 2 0 ]
-"88
+"83
 [v _application_intialize application_intialize `(v  1 e 1 0 ]
-"93
+"88
 [v _keypad_read_value keypad_read_value `(uc  1 e 1 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
@@ -143,12 +143,10 @@ GPIO_HIGH 1
 [v _ret ret `uc  1 e 1 0 ]
 "14
 [v _keypad_value keypad_value `uc  1 e 1 0 ]
-"16
-[v _password password `[7]uc  1 e 7 0 ]
 "17
-[v _entered_password entered_password `[7]uc  1 e 7 0 ]
+[v _entered_password entered_password `ul  1 e 4 0 ]
 "18
-[v _password_index password_index `uc  1 e 1 0 ]
+[v _number_of_clicks number_of_clicks `uc  1 e 1 0 ]
 "19
 [v _lcd_output_data_col lcd_output_data_col `uc  1 e 1 0 ]
 "53 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4620.h
@@ -215,11 +213,7 @@ GPIO_HIGH 1
 "21 C:\Users\Ehab\Documents\MCU_Projects\Door_Lock\Door_Lock.X\application.c
 [v _main main `(i  1 e 2 0 ]
 {
-"40
-[v main@index_check index_check `uc  1 a 1 40 ]
-"39
-[v main@isPasswordValid isPasswordValid `uc  1 a 1 39 ]
-"86
+"81
 } 0
 "51 C:\Users\Ehab\Documents\MCU_Projects\Door_Lock\Door_Lock.X\ECU_Layer/DC_Motor/ecu_dc_motor.c
 [v _motor_stop motor_stop `(uc  1 e 1 0 ]
@@ -382,14 +376,14 @@ GPIO_HIGH 1
 [v lcd_4bit_send_char@data data `uc  1 p 1 21 ]
 "87
 } 0
-"93 C:\Users\Ehab\Documents\MCU_Projects\Door_Lock\Door_Lock.X\application.c
+"88 C:\Users\Ehab\Documents\MCU_Projects\Door_Lock\Door_Lock.X\application.c
 [v _keypad_read_value keypad_read_value `(uc  1 e 1 0 ]
 {
-"102
+"97
 [v keypad_read_value@new_value new_value `uc  1 a 1 22 ]
-"95
+"90
 [v keypad_read_value@current_value current_value `uc  1 a 1 21 ]
-"109
+"104
 } 0
 "46 C:\Users\Ehab\Documents\MCU_Projects\Door_Lock\Door_Lock.X\ECU_Layer/Keypad/ecu_keypad.c
 [v _keypad_get_value keypad_get_value `(uc  1 e 1 0 ]
@@ -428,10 +422,10 @@ GPIO_HIGH 1
 [v gpio_pin_read_logic@logic logic `*.39E2965  1 p 2 2 ]
 "84
 } 0
-"88 C:\Users\Ehab\Documents\MCU_Projects\Door_Lock\Door_Lock.X\application.c
+"83 C:\Users\Ehab\Documents\MCU_Projects\Door_Lock\Door_Lock.X\application.c
 [v _application_intialize application_intialize `(v  1 e 1 0 ]
 {
-"90
+"85
 } 0
 "85 C:\Users\Ehab\Documents\MCU_Projects\Door_Lock\Door_Lock.X\ECU_Layer/ecu_layer_intialize.c
 [v _ecu_layer_intialize ecu_layer_intialize `(uc  1 e 1 0 ]
@@ -605,4 +599,14 @@ GPIO_HIGH 1
 "21
 [v gpio_pin_direction_intialize@_pin_config _pin_config `*.39CS24  1 p 2 0 ]
 "38
+} 0
+"15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 8 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 0 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
+"129
 } 0

@@ -4841,9 +4841,9 @@ Std_ReturnType ret = (Std_ReturnType)0x01;
 
 uint8 keypad_value;
 
-uint8 password[7] = {"123456"};
-uint8 entered_password[7];
-uint8 password_index = 0;
+uint32 password = 123456;
+uint32 entered_password = 0;
+uint8 number_of_clicks = 0;
 uint8 lcd_output_data_col = 14;
 
 int main()
@@ -4857,22 +4857,14 @@ int main()
 
         keypad_value = keypad_read_value();
 
-        if(6 == password_index)
+        if(6 == number_of_clicks)
         {
 
-            password_index = 0;
+            number_of_clicks = 0;
             lcd_output_data_col = 14;
 
 
-            uint8 isPasswordValid = 1;
-            for(uint8 index_check = 0 ; index_check < 6 ; index_check++){
-                if(password[index_check] != entered_password[index_check]){
-                    isPasswordValid = 0;
-                    break;
-                }
-            }
-
-            if(1 == isPasswordValid)
+            if(entered_password == password)
             {
                 ret = led_turn_on(&led_opened);
                 ret = motor_move_right(&motor);
@@ -4898,11 +4890,14 @@ int main()
                 ret = lcd_4bit_send_string(&lcd, "Enter Password:");
             }
 
+            entered_password = 0;
         }
 
         if('0' <= keypad_value && keypad_value <= '9')
         {
-           entered_password[password_index++] = keypad_value;
+            number_of_clicks++;
+
+           entered_password = (entered_password * 10) + (keypad_value - '0');
            ret = lcd_4bit_send_char_pos(&lcd, 2, ++lcd_output_data_col, keypad_value);
            _delay((unsigned long)((400)*(4000000/4000.0)));
            ret = lcd_4bit_send_char_pos(&lcd, 2, lcd_output_data_col, '*');
