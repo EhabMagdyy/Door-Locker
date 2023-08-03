@@ -518,232 +518,310 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _lcd_output_data_col
 -> -> 14 `i `uc
 ]
-[v $root$_main `(v ~T0 @X0 0 e ]
 "21
-[; ;application.c: 21: int main()
+[; ;application.c: 21: uint8 incorrect_pass = 0;
+[v _incorrect_pass `uc ~T0 @X0 1 e ]
+[i _incorrect_pass
+-> -> 0 `i `uc
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"23
+[; ;application.c: 23: int main()
 [v _main `(i ~T0 @X0 1 ef ]
-"22
-[; ;application.c: 22: {
+"24
+[; ;application.c: 24: {
 {
 [e :U _main ]
 [f ]
-"23
-[; ;application.c: 23:     application_intialize();
-[e ( _application_intialize ..  ]
 "25
-[; ;application.c: 25:     ret = lcd_4bit_send_string(&lcd, "Enter Password:");
-[e = _ret ( _lcd_4bit_send_string (2 , -> &U _lcd `*CS276 :s 1C ]
+[; ;application.c: 25:     application_intialize();
+[e ( _application_intialize ..  ]
 "27
-[; ;application.c: 27:     while(1)
+[; ;application.c: 27:     ret = lcd_4bit_send_string(&lcd, "Enter Password:");
+[e = _ret ( _lcd_4bit_send_string (2 , -> &U _lcd `*CS276 :s 1C ]
+"29
+[; ;application.c: 29:     while(1)
 [e :U 280 ]
-"28
-[; ;application.c: 28:     {
-{
 "30
-[; ;application.c: 30:         keypad_value = keypad_read_value();
-[e = _keypad_value ( _keypad_read_value ..  ]
+[; ;application.c: 30:     {
+{
 "32
-[; ;application.c: 32:         if(6 == number_of_clicks)
+[; ;application.c: 32:         keypad_value = keypad_read_value();
+[e = _keypad_value ( _keypad_read_value ..  ]
+"34
+[; ;application.c: 34:         if(6 == number_of_clicks)
 [e $ ! == -> 6 `i -> _number_of_clicks `i 282  ]
-"33
-[; ;application.c: 33:         {
-{
 "35
-[; ;application.c: 35:             number_of_clicks = 0;
-[e = _number_of_clicks -> -> 0 `i `uc ]
-"36
-[; ;application.c: 36:             lcd_output_data_col = 14;
-[e = _lcd_output_data_col -> -> 14 `i `uc ]
-"39
-[; ;application.c: 39:             if(entered_password == password)
-[e $ ! == _entered_password _password 283  ]
-"40
-[; ;application.c: 40:             {
+[; ;application.c: 35:         {
 {
+"37
+[; ;application.c: 37:             number_of_clicks = 0;
+[e = _number_of_clicks -> -> 0 `i `uc ]
+"38
+[; ;application.c: 38:             lcd_output_data_col = 14;
+[e = _lcd_output_data_col -> -> 14 `i `uc ]
 "41
-[; ;application.c: 41:                 ret = led_turn_on(&led_opened);
-[e = _ret ( _led_turn_on (1 -> &U _led_opened `*CS274 ]
+[; ;application.c: 41:             if(entered_password == password)
+[e $ ! == _entered_password _password 283  ]
 "42
-[; ;application.c: 42:                 ret = motor_move_right(&motor);
-[e = _ret ( _motor_move_right (1 -> &U _motor `*CS277 ]
+[; ;application.c: 42:             {
+{
 "43
-[; ;application.c: 43:                 ret = lcd_4bit_send_command(&lcd, 0x01);
-[e = _ret ( _lcd_4bit_send_command (2 , -> &U _lcd `*CS276 -> -> 1 `i `uc ]
+[; ;application.c: 43:                 ret = led_turn_on(&led_opened);
+[e = _ret ( _led_turn_on (1 -> &U _led_opened `*CS274 ]
 "44
-[; ;application.c: 44:                 ret = lcd_4bit_send_string_pos(&lcd , 1, 7, "Welcome!");
-[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd `*CS276 -> -> 1 `i `uc -> -> 7 `i `uc :s 2C ]
+[; ;application.c: 44:                 ret = motor_move_right(&motor);
+[e = _ret ( _motor_move_right (1 -> &U _motor `*CS277 ]
 "45
-[; ;application.c: 45:                 _delay((unsigned long)((3000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"47
-[; ;application.c: 47:                 ret = led_turn_off(&led_opened);
-[e = _ret ( _led_turn_off (1 -> &U _led_opened `*CS274 ]
-"48
-[; ;application.c: 48:                 ret = motor_stop(&motor);
-[e = _ret ( _motor_stop (1 -> &U _motor `*CS277 ]
-"49
-[; ;application.c: 49:                 ret = lcd_4bit_send_command(&lcd, 0x01);
+[; ;application.c: 45:                 ret = lcd_4bit_send_command(&lcd, 0x01);
 [e = _ret ( _lcd_4bit_send_command (2 , -> &U _lcd `*CS276 -> -> 1 `i `uc ]
+"46
+[; ;application.c: 46:                 ret = lcd_4bit_send_string_pos(&lcd , 1, 7, "Welcome!");
+[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd `*CS276 -> -> 1 `i `uc -> -> 7 `i `uc :s 2C ]
+"47
+[; ;application.c: 47:                 incorrect_pass = 0;
+[e = _incorrect_pass -> -> 0 `i `uc ]
+"48
+[; ;application.c: 48:                 _delay((unsigned long)((3000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "50
-[; ;application.c: 50:             }
+[; ;application.c: 50:                 ret = led_turn_off(&led_opened);
+[e = _ret ( _led_turn_off (1 -> &U _led_opened `*CS274 ]
+"51
+[; ;application.c: 51:                 ret = motor_stop(&motor);
+[e = _ret ( _motor_stop (1 -> &U _motor `*CS277 ]
+"52
+[; ;application.c: 52:                 ret = lcd_4bit_send_command(&lcd, 0x01);
+[e = _ret ( _lcd_4bit_send_command (2 , -> &U _lcd `*CS276 -> -> 1 `i `uc ]
+"53
+[; ;application.c: 53:                 ret = lcd_4bit_send_string(&lcd, "Enter Password:");
+[e = _ret ( _lcd_4bit_send_string (2 , -> &U _lcd `*CS276 :s 3C ]
+"54
+[; ;application.c: 54:             }
 }
 [e $U 284  ]
-"52
-[; ;application.c: 52:             else
-[e :U 283 ]
-"53
-[; ;application.c: 53:             {
-{
-"54
-[; ;application.c: 54:                 ret = led_turn_on(&led_locked);
-[e = _ret ( _led_turn_on (1 -> &U _led_locked `*CS274 ]
-"55
-[; ;application.c: 55:                 ret = lcd_4bit_send_command(&lcd, 0x01);
-[e = _ret ( _lcd_4bit_send_command (2 , -> &U _lcd `*CS276 -> -> 1 `i `uc ]
 "56
-[; ;application.c: 56:                 ret = lcd_4bit_send_string_pos(&lcd, 1, 2, "Incorrect Password!");
-[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd `*CS276 -> -> 1 `i `uc -> -> 2 `i `uc :s 3C ]
+[; ;application.c: 56:             else
+[e :U 283 ]
 "57
-[; ;application.c: 57:                 ret = lcd_4bit_send_string_pos(&lcd, 2, 2, "Please, try again");
-[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd `*CS276 -> -> 2 `i `uc -> -> 2 `i `uc :s 4C ]
+[; ;application.c: 57:             {
+{
+"58
+[; ;application.c: 58:                 ret = led_turn_on(&led_locked);
+[e = _ret ( _led_turn_on (1 -> &U _led_locked `*CS274 ]
 "59
-[; ;application.c: 59:                 _delay((unsigned long)((2000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"60
-[; ;application.c: 60:                 ret = led_turn_off(&led_locked);
-[e = _ret ( _led_turn_off (1 -> &U _led_locked `*CS274 ]
-"61
-[; ;application.c: 61:                 ret = lcd_4bit_send_command(&lcd, 0x01);
+[; ;application.c: 59:                 ret = lcd_4bit_send_command(&lcd, 0x01);
 [e = _ret ( _lcd_4bit_send_command (2 , -> &U _lcd `*CS276 -> -> 1 `i `uc ]
+"60
+[; ;application.c: 60:                 ret = lcd_4bit_send_string_pos(&lcd, 1, 2, "Incorrect Password!");
+[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd `*CS276 -> -> 1 `i `uc -> -> 2 `i `uc :s 4C ]
 "62
-[; ;application.c: 62:                 ret = lcd_4bit_send_string(&lcd, "Enter Password:");
+[; ;application.c: 62:                 incorrect_pass++;
+[e ++ _incorrect_pass -> -> 1 `i `uc ]
+"64
+[; ;application.c: 64:                 _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"65
+[; ;application.c: 65:                 ret = led_turn_off(&led_locked);
+[e = _ret ( _led_turn_off (1 -> &U _led_locked `*CS274 ]
+"66
+[; ;application.c: 66:                 ret = lcd_4bit_send_command(&lcd, 0x01);
+[e = _ret ( _lcd_4bit_send_command (2 , -> &U _lcd `*CS276 -> -> 1 `i `uc ]
+"67
+[; ;application.c: 67:                 ret = lcd_4bit_send_string(&lcd, "Enter Password:");
 [e = _ret ( _lcd_4bit_send_string (2 , -> &U _lcd `*CS276 :s 5C ]
-"63
-[; ;application.c: 63:             }
+"68
+[; ;application.c: 68:             }
 }
 [e :U 284 ]
-"65
-[; ;application.c: 65:             entered_password = 0;
+"70
+[; ;application.c: 70:             if(3 == incorrect_pass){
+[e $ ! == -> 3 `i -> _incorrect_pass `i 285  ]
+{
+"71
+[; ;application.c: 71:                 ret = lcd_4bit_send_string_pos(&lcd, 1, 1, "Try again in    sec");
+[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd `*CS276 -> -> 1 `i `uc -> -> 1 `i `uc :s 6C ]
+"72
+[; ;application.c: 72:                 uint8 _char = 0;
+[v __char `uc ~T0 @X0 1 a ]
+[e = __char -> -> 0 `i `uc ]
+"73
+[; ;application.c: 73:                 for(uint8 counter = 60 ; counter > 0 ; counter--){
+{
+[v _counter `uc ~T0 @X0 1 a ]
+[e = _counter -> -> 60 `i `uc ]
+[e $ > -> _counter `i -> 0 `i 286  ]
+[e $U 287  ]
+[e :U 286 ]
+{
+"74
+[; ;application.c: 74:                     _char = '0' + (counter % 10);
+[e = __char -> + -> 48 `ui -> % -> _counter `i -> 10 `i `ui `uc ]
+"75
+[; ;application.c: 75:                     ret = lcd_4bit_send_char_pos(&lcd, 1, 16, _char);
+[e = _ret ( _lcd_4bit_send_char_pos (4 , , , -> &U _lcd `*CS276 -> -> 1 `i `uc -> -> 16 `i `uc __char ]
+"76
+[; ;application.c: 76:                     _char = '0' + ((counter/10) % 10);
+[e = __char -> + -> 48 `ui -> % / -> _counter `i -> 10 `i -> 10 `i `ui `uc ]
+"77
+[; ;application.c: 77:                     ret = lcd_4bit_send_char_pos(&lcd, 1, 15, _char);
+[e = _ret ( _lcd_4bit_send_char_pos (4 , , , -> &U _lcd `*CS276 -> -> 1 `i `uc -> -> 15 `i `uc __char ]
+"78
+[; ;application.c: 78:                     ret = led_turn_on(&led_locked);
+[e = _ret ( _led_turn_on (1 -> &U _led_locked `*CS274 ]
+"79
+[; ;application.c: 79:                     _delay((unsigned long)((500)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"80
+[; ;application.c: 80:                     ret = led_turn_off(&led_locked);
+[e = _ret ( _led_turn_off (1 -> &U _led_locked `*CS274 ]
+"81
+[; ;application.c: 81:                     _delay((unsigned long)((500)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"82
+[; ;application.c: 82:                 }
+}
+[e -- _counter -> -> 1 `i `uc ]
+[e $ > -> _counter `i -> 0 `i 286  ]
+[e :U 287 ]
+}
+"83
+[; ;application.c: 83:                 incorrect_pass = 0;
+[e = _incorrect_pass -> -> 0 `i `uc ]
+"84
+[; ;application.c: 84:                 ret = lcd_4bit_send_command(&lcd, 0x01);
+[e = _ret ( _lcd_4bit_send_command (2 , -> &U _lcd `*CS276 -> -> 1 `i `uc ]
+"85
+[; ;application.c: 85:                 ret = lcd_4bit_send_string(&lcd, "Enter Password:");
+[e = _ret ( _lcd_4bit_send_string (2 , -> &U _lcd `*CS276 :s 7C ]
+"86
+[; ;application.c: 86:             }
+}
+[e :U 285 ]
+"88
+[; ;application.c: 88:             entered_password = 0;
 [e = _entered_password -> -> -> 0 `i `l `ul ]
-"66
-[; ;application.c: 66:         }
+"89
+[; ;application.c: 89:         }
 }
 [e :U 282 ]
-"68
-[; ;application.c: 68:         if('0' <= keypad_value && keypad_value <= '9')
-[e $ ! && <= -> 48 `ui -> _keypad_value `ui <= -> _keypad_value `ui -> 57 `ui 285  ]
-"69
-[; ;application.c: 69:         {
+"91
+[; ;application.c: 91:         if('0' <= keypad_value && keypad_value <= '9')
+[e $ ! && <= -> 48 `ui -> _keypad_value `ui <= -> _keypad_value `ui -> 57 `ui 289  ]
+"92
+[; ;application.c: 92:         {
 {
-"70
-[; ;application.c: 70:             number_of_clicks++;
+"93
+[; ;application.c: 93:             number_of_clicks++;
 [e ++ _number_of_clicks -> -> 1 `i `uc ]
-"72
-[; ;application.c: 72:            entered_password = (entered_password * 10) + (keypad_value - '0');
+"95
+[; ;application.c: 95:            entered_password = (entered_password * 10) + (keypad_value - '0');
 [e = _entered_password + * _entered_password -> -> -> 10 `i `l `ul -> - -> _keypad_value `ui -> 48 `ui `ul ]
-"73
-[; ;application.c: 73:            ret = lcd_4bit_send_char_pos(&lcd, 2, ++lcd_output_data_col, keypad_value);
+"96
+[; ;application.c: 96:            ret = lcd_4bit_send_char_pos(&lcd, 2, ++lcd_output_data_col, keypad_value);
 [e = _ret ( _lcd_4bit_send_char_pos (4 , , , -> &U _lcd `*CS276 -> -> 2 `i `uc =+ _lcd_output_data_col -> -> 1 `i `uc _keypad_value ]
-"74
-[; ;application.c: 74:            _delay((unsigned long)((400)*(4000000/4000.0)));
+"97
+[; ;application.c: 97:            _delay((unsigned long)((400)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 400 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"75
-[; ;application.c: 75:            ret = lcd_4bit_send_char_pos(&lcd, 2, lcd_output_data_col, '*');
+"98
+[; ;application.c: 98:            ret = lcd_4bit_send_char_pos(&lcd, 2, lcd_output_data_col, '*');
 [e = _ret ( _lcd_4bit_send_char_pos (4 , , , -> &U _lcd `*CS276 -> -> 2 `i `uc _lcd_output_data_col -> -> 42 `ui `uc ]
-"76
-[; ;application.c: 76:         }
+"99
+[; ;application.c: 99:         }
 }
-[e $U 286  ]
-"77
-[; ;application.c: 77:         else{ }
-[e :U 285 ]
+[e $U 290  ]
+"100
+[; ;application.c: 100:         else{ }
+[e :U 289 ]
 {
 }
-[e :U 286 ]
-"78
-[; ;application.c: 78:     }
+[e :U 290 ]
+"101
+[; ;application.c: 101:     }
 }
 [e :U 279 ]
 [e $U 280  ]
 [e :U 281 ]
-"80
-[; ;application.c: 80:     return (0);
+"103
+[; ;application.c: 103:     return (0);
 [e ) -> 0 `i ]
 [e $UE 278  ]
-"81
-[; ;application.c: 81: }
+"104
+[; ;application.c: 104: }
 [e :UE 278 ]
 }
-"83
-[; ;application.c: 83: void application_intialize(){
+"106
+[; ;application.c: 106: void application_intialize(){
 [v _application_intialize `(v ~T0 @X0 1 ef ]
 {
 [e :U _application_intialize ]
 [f ]
-"84
-[; ;application.c: 84:     ret = ecu_layer_intialize();
+"107
+[; ;application.c: 107:     ret = ecu_layer_intialize();
 [e = _ret ( _ecu_layer_intialize ..  ]
-"85
-[; ;application.c: 85: }
-[e :UE 287 ]
+"108
+[; ;application.c: 108: }
+[e :UE 291 ]
 }
-"88
-[; ;application.c: 88: uint8 keypad_read_value()
+"111
+[; ;application.c: 111: uint8 keypad_read_value()
 [v _keypad_read_value `(uc ~T0 @X0 1 ef ]
-"89
-[; ;application.c: 89: {
+"112
+[; ;application.c: 112: {
 {
 [e :U _keypad_read_value ]
 [f ]
-"90
-[; ;application.c: 90:     uint8 current_value;
+"113
+[; ;application.c: 113:     uint8 current_value;
 [v _current_value `uc ~T0 @X0 1 a ]
-"92
-[; ;application.c: 92:     ret = keypad_get_value(&keypad, &current_value);
+"115
+[; ;application.c: 115:     ret = keypad_get_value(&keypad, &current_value);
 [e = _ret ( _keypad_get_value (2 , -> &U _keypad `*CS275 &U _current_value ]
-"93
-[; ;application.c: 93:     _delay((unsigned long)((150)*(4000000/4000.0)));
+"116
+[; ;application.c: 116:     _delay((unsigned long)((150)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 150 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"94
-[; ;application.c: 94:     if('\0' == current_value){
-[e $ ! == -> 0 `ui -> _current_value `ui 289  ]
+"117
+[; ;application.c: 117:     if('\0' == current_value){
+[e $ ! == -> 0 `ui -> _current_value `ui 293  ]
 {
-"95
-[; ;application.c: 95:         return 0;
+"118
+[; ;application.c: 118:         return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 288  ]
-"96
-[; ;application.c: 96:     }
+[e $UE 292  ]
+"119
+[; ;application.c: 119:     }
 }
-[e :U 289 ]
-"97
-[; ;application.c: 97:     uint8 new_value;
+[e :U 293 ]
+"120
+[; ;application.c: 120:     uint8 new_value;
 [v _new_value `uc ~T0 @X0 1 a ]
-"98
-[; ;application.c: 98:     ret = keypad_get_value(&keypad, &new_value);
+"121
+[; ;application.c: 121:     ret = keypad_get_value(&keypad, &new_value);
 [e = _ret ( _keypad_get_value (2 , -> &U _keypad `*CS275 &U _new_value ]
-"100
-[; ;application.c: 100:     if (current_value == new_value){
-[e $ ! == -> _current_value `i -> _new_value `i 290  ]
+"123
+[; ;application.c: 123:     if (current_value == new_value){
+[e $ ! == -> _current_value `i -> _new_value `i 294  ]
 {
-"101
-[; ;application.c: 101:         return new_value;
+"124
+[; ;application.c: 124:         return new_value;
 [e ) _new_value ]
-[e $UE 288  ]
-"102
-[; ;application.c: 102:     }
+[e $UE 292  ]
+"125
+[; ;application.c: 125:     }
 }
-[e :U 290 ]
-"103
-[; ;application.c: 103:     return 0;
+[e :U 294 ]
+"126
+[; ;application.c: 126:     return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 288  ]
-"104
-[; ;application.c: 104: }
-[e :UE 288 ]
+[e $UE 292  ]
+"127
+[; ;application.c: 127: }
+[e :UE 292 ]
 }
-[a 4C 80 108 101 97 115 101 44 32 116 114 121 32 97 103 97 105 110 0 ]
+[a 6C 84 114 121 32 97 103 97 105 110 32 105 110 32 32 32 32 115 101 99 0 ]
 [a 1C 69 110 116 101 114 32 80 97 115 115 119 111 114 100 58 0 ]
+[a 3C 69 110 116 101 114 32 80 97 115 115 119 111 114 100 58 0 ]
 [a 5C 69 110 116 101 114 32 80 97 115 115 119 111 114 100 58 0 ]
+[a 7C 69 110 116 101 114 32 80 97 115 115 119 111 114 100 58 0 ]
 [a 2C 87 101 108 99 111 109 101 33 0 ]
-[a 3C 73 110 99 111 114 114 101 99 116 32 80 97 115 115 119 111 114 100 33 0 ]
+[a 4C 73 110 99 111 114 114 101 99 116 32 80 97 115 115 119 111 114 100 33 0 ]

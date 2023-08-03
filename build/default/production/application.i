@@ -4846,6 +4846,8 @@ uint32 entered_password = 0;
 uint8 number_of_clicks = 0;
 uint8 lcd_output_data_col = 14;
 
+uint8 incorrect_pass = 0;
+
 int main()
 {
     application_intialize();
@@ -4870,11 +4872,13 @@ int main()
                 ret = motor_move_right(&motor);
                 ret = lcd_4bit_send_command(&lcd, 0x01);
                 ret = lcd_4bit_send_string_pos(&lcd , 1, 7, "Welcome!");
+                incorrect_pass = 0;
                 _delay((unsigned long)((3000)*(4000000/4000.0)));
 
                 ret = led_turn_off(&led_opened);
                 ret = motor_stop(&motor);
                 ret = lcd_4bit_send_command(&lcd, 0x01);
+                ret = lcd_4bit_send_string(&lcd, "Enter Password:");
             }
 
             else
@@ -4882,10 +4886,29 @@ int main()
                 ret = led_turn_on(&led_locked);
                 ret = lcd_4bit_send_command(&lcd, 0x01);
                 ret = lcd_4bit_send_string_pos(&lcd, 1, 2, "Incorrect Password!");
-                ret = lcd_4bit_send_string_pos(&lcd, 2, 2, "Please, try again");
+
+                incorrect_pass++;
 
                 _delay((unsigned long)((2000)*(4000000/4000.0)));
                 ret = led_turn_off(&led_locked);
+                ret = lcd_4bit_send_command(&lcd, 0x01);
+                ret = lcd_4bit_send_string(&lcd, "Enter Password:");
+            }
+
+            if(3 == incorrect_pass){
+                ret = lcd_4bit_send_string_pos(&lcd, 1, 1, "Try again in    sec");
+                uint8 _char = 0;
+                for(uint8 counter = 60 ; counter > 0 ; counter--){
+                    _char = '0' + (counter % 10);
+                    ret = lcd_4bit_send_char_pos(&lcd, 1, 16, _char);
+                    _char = '0' + ((counter/10) % 10);
+                    ret = lcd_4bit_send_char_pos(&lcd, 1, 15, _char);
+                    ret = led_turn_on(&led_locked);
+                    _delay((unsigned long)((500)*(4000000/4000.0)));
+                    ret = led_turn_off(&led_locked);
+                    _delay((unsigned long)((500)*(4000000/4000.0)));
+                }
+                incorrect_pass = 0;
                 ret = lcd_4bit_send_command(&lcd, 0x01);
                 ret = lcd_4bit_send_string(&lcd, "Enter Password:");
             }
